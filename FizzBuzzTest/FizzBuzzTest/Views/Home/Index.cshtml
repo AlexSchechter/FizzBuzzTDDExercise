@@ -1,0 +1,38 @@
+﻿@model FizzBuzzTest.ViewModels.FizzBuzzViewModel
+
+
+<h2>Please Enter a Positive Integer Up To And Including 100</h2>
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Section)
+    @Html.TextBoxFor(m => m.Input)
+    <input class="btn" type="submit" name="submitButton" value="submit" />
+
+    if (Model != null)
+    {
+        foreach (string item in Model.Sequence)
+        {
+            if (item == "fizz")
+            {
+                <div class="fizz">@item</div>
+            }
+            else if (item == "buzz")
+            {
+                <div class="buzz">@item</div>
+            }
+            else if (item == "fizz buzz")
+            {
+                <span class="fizz">fizz </span><span class="buzz">buzz</span>
+                <br />
+            }
+            else
+            {
+                <div>@item</div>
+            }
+        }
+    }   
+    <br />
+    <input type="submit" name="submitButton" value="previous" class="btn"/>
+    <input type="submit" name="submitButton" value="next" class="btn" />
+}
